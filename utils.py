@@ -31,8 +31,8 @@ def barra_extract(target_var, extracted_data_save_dir, time_step, nation_domain,
     import glob
     import xarray as xr
     
-    if not os.path.isfile(f"{extracted_data_save_dir}/BARRAR2/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}_{time_step}.nc"):
-        os.makedirs(f"{extracted_data_save_dir}/BARRAR2/{target_var}/", exist_ok=True)
+    if not os.path.isfile(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}_{time_step}.nc"):
+        os.makedirs(os.path.abspath(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/"), exist_ok=True)
         barra_files = sorted(glob.glob(f"{barraR2_dir}/{time_step}/{target_var}/v20240809/*{year}*.nc"))
         datasets = []
         for file in barra_files:
@@ -40,7 +40,7 @@ def barra_extract(target_var, extracted_data_save_dir, time_step, nation_domain,
             datasets.append(ds[target_var].sel(lat=slice(domain_dict[nation_domain]['lat_min'], domain_dict[nation_domain]['lat_max']), lon=slice(domain_dict[nation_domain]['lon_min'], domain_dict[nation_domain]['lon_max'])))
             del ds
         ds_cube = xr.concat(datasets, dim='time')
-        ds_cube.to_netcdf(f"{extracted_data_save_dir}/BARRAR2/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}_{time_step}.nc", encoding={f"{target_var}": {'zlib': True, 'complevel': 5, 'dtype':'float32'}})
+        ds_cube.to_netcdf(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}_{time_step}.nc", encoding={f"{target_var}": {'zlib': True, 'complevel': 5, 'dtype':'float32'}})
         ds_cube.close()
     return
 
@@ -58,7 +58,7 @@ def era5_extract(target_var, extracted_data_save_dir, nation_domain, year):
     import glob
     import xarray as xr
 
-    if not os.path.isfile(f"{extracted_data_save_dir}/ERA5/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}.nc"):
+    if not os.path.isfile(f"{extracted_data_save_dir}/ERA5/{target_var}/{nation_domain}_ERA5_{year}_{target_var}.nc"):
         os.makedirs(f"{extracted_data_save_dir}/ERA5/{target_var}/", exist_ok=True)
         
         def preprocess_era5(ds):
@@ -66,6 +66,6 @@ def era5_extract(target_var, extracted_data_save_dir, nation_domain, year):
         
         era5_files = sorted(glob.glob(f"{era5_dir}single-levels/reanalysis/{target_var}/{year}/*.nc"))
         ds_cube = xr.open_mfdataset(era5_files,combine='by_coords',parallel=True, engine='netcdf4', preprocess=preprocess_era5).chunk({'time':-1, 'latitude':'auto', 'longitude':'auto'})
-        ds_cube.to_netcdf(f"{extracted_data_save_dir}/ERA5/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}.nc", encoding={f"{list(ds_cube.data_vars)[0]}": {'zlib': True, 'complevel': 5, 'dtype':'float32'}})
+        ds_cube.to_netcdf(f"{extracted_data_save_dir}/ERA5/{target_var}/{nation_domain}_ERA5_{year}_{target_var}.nc", encoding={f"{list(ds_cube.data_vars)[0]}": {'zlib': True, 'complevel': 5, 'dtype':'float32'}})
         ds_cube.close()
     return
