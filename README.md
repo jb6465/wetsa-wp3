@@ -2,7 +2,7 @@
 GitHub repository for WETSA WP3 team to store, track and develop code, key outputs and relevant analysis.<br>
 <sub> 🚩 indicates action required by BMKG</sub><br><br>
 
-**Navigation:** [Obs Comparison](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#reanalysis-comparison-with-in-situ-data) | [Reanalysis Climatology](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#barraera5-resource-potential-climatology) | [Coincident peak/low resource periods](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#coincident-peaklow-resource-period-analysis) | [Projections Analysis](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#projections-analysis) | [Relevant Studies](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#relevant-studies)<br>
+**Navigation:** [Obs Comparison](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#reanalysis-comparison-with-in-situ-data) | [Reanalysis Climatology](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#barraera5-resource-potential-climatology) | [Coincident period analysis](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#coincident-peaklow-resource-period-analysis) | [Projections Analysis](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#projections-analysis) | [Relevant Studies](https://github.com/jb6465/wetsa-wp3/edit/main/README.md#relevant-studies)<br>
 
 
 
