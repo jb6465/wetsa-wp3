@@ -33,7 +33,7 @@ def barra_extract(target_var, extracted_data_save_dir, time_step, nation_domain,
     
     if not os.path.isfile(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}_{time_step}.nc"):
         os.makedirs(os.path.abspath(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/"), exist_ok=True)
-        barra_files = sorted(glob.glob(f"{barraR2_dir}/{time_step}/{target_var}/v20240809/*{year}*.nc"))
+        barra_files = sorted(glob.glob(f"{barraR2_dir}/{time_step}/{target_var}/latest/*{year}*.nc"))
         datasets = []
         for file in barra_files:
             ds = xr.open_dataset(file, engine='netcdf4')
