@@ -2,13 +2,6 @@
 barraR2_dir = '/g/data/ob53/BARRA2/output/reanalysis/AUS-11/BOM/ERA5/historical/hres/BARRA-R2/v1/'
 era5_dir = '/g/data/rt52/era5/'
 
-# dictionaries
-variable_dict = {
-    'ERA5': ['10u', '10v', 'ssrt', 'tp', '2t'],
-    'BARRAR2': ['sfcWind', 'uas', 'u50m', 'u100m', 'u150m', 'u200m', 'vas', 'v50m', 'v100m', 'v150m', 'v200m', 'rsds', 'pr', 'tas'],#daily vars: sfcWindmax tasmin tasmax
-    'obs': {}
-}
-
 domain_dict = { #can add nation domains for future wetsa work
     'indonesia':{'lat_min':-11, 'lat_max':6, 'lon_min':95, 'lon_max':141},
     'australia':{'lat_min':-44, 'lat_max':-10, 'lon_min':112, 'lon_max':154},
@@ -33,7 +26,7 @@ def barra_extract(target_var, extracted_data_save_dir, time_step, nation_domain,
     
     if not os.path.isfile(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/{nation_domain}_BARRAR2_{year}_{target_var}_{time_step}.nc"):
         os.makedirs(os.path.abspath(f"{extracted_data_save_dir}/BARRAR2/{time_step}/{target_var}/"), exist_ok=True)
-        barra_files = sorted(glob.glob(f"{barraR2_dir}/{time_step}/{target_var}/latest/*{year}*.nc"))
+        barra_files = sorted(glob.glob(f"{barraR2_dir}/day/{target_var}/latest/*{year}*-{year}*.nc"))
         datasets = []
         for file in barra_files:
             ds = xr.open_dataset(file, engine='netcdf4')
