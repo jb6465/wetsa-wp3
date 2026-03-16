@@ -1,0 +1,6 @@
+[submodule "/g/data/qz03/wp3/users/jb6465/code/git-repo/submodules/dataset_finder"]
+	path = /g/data/qz03/wp3/users/jb6465/code/git-repo/submodules/dataset_finder
+	url = https://github.com/AusClimateService/dataset_finder.git
+[submodule "/g/data/qz03/wp3/users/jb6465/code/git-repo/submodules/gwls"]
+	path = /g/data/qz03/wp3/users/jb6465/code/git-repo/submodules/gwls
+	url = https://github.com/AusClimateService/gwls.git
